@@ -78,9 +78,10 @@ for i in range(len(img_eles)):
         
         filename  = str(i+1)+ '_' + img_titles[i].get_attribute('title')
         filename = re.sub('[^가-힣A-Za-z0-9 _]+', '', filename)
-        filename = filename.strip()
-        if len(filename) >= 40:
-                filename = filename[0:20]
+        #filename = re.sub('[ +]', ' ', filename)   #공백이 2개 이상을 경우 하나의 공백으로
+        filename = filename.strip() #파일의 앞뒤 공백은 모두 제거
+        if len(filename) >= 40:     #파일 길이가 40이상이면 40까지만 사용
+                filename = filename[0:40]
 
         # 이미지 확장자가 있는 것과 없는 것을 구분하여 저장
         file_ext = bigImage_url.split('.')[-1]
